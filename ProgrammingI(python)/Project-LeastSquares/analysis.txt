@@ -1,0 +1,16 @@
+Analysis:
+Ages.csv
+I used the year 2010 and 2700 to test the accuracy of these predictions. This is obviously the most accurate of the data sets, as it is 100% accurate due to the average error and regression standard error both being 0 (since it essentially just counts from the first year listed).
+
+Hurricanes.csv
+The known values I checked for hurricanes were 2016 and 2000. Our predictions were 6.41 and 6.22 respectively. In reality there were 7 and 8, respectively. So it would appear that our model tends to predict lower values compared to reality. I used the unknown value 2100 to judge predictions, which gave a value of 7.43. This seems low, given the trends of the past few years, and I would guess that the older data is counteracting more recent trends that are (possibly?) caused by global warming. This means the predictions are a good estimate, but not all that accurate.
+
+Temp.csv
+To judge our model, I used the known years of 2000 and 2016. Our predictions gave us 57.91 and 58.12, respectively. While finding the exact answer to these in reality was impossible—due to not knowing which temperature taking method our data was derived from—it is easy to see that the model underplays warming temperature trends; when using a hypothetical like the year 2100, we see a minor increase to 59, or one total degree over the 84 year period between 2016 and 2100. I would say these predictions from 2017 on are inaccurate and tend to be lower than reality.
+
+Voters.csv
+Again using the years 2000 and 2016 to gauge the accuracy of our prediction with known values, our model gives us 225 million and 275 million, respectively. Without checking I know this is way too high, given the US population being about 330 million and recent voter turnout never hitting 60+%. Yea, the actual values are 105 million (50%) and 138 million, respectively. This means our model is overestimating turnout. Picking the hypothetical point 2100 proves this, as it claims 500+ million people will vote in that election. I would consider this model to be the least accurate of the bunch.
+
+Weights.csv
+This one was impressively accurate; comparing our estimates for 60 and 70, we get 101 and 163, respectively. While our data is irrespective of gender, we are accurate, as the USA health scale estimates that our heights should give 100 and 160, respectively. This proves to be the second most accurate model and using the hypothetical height 80 bears this out.
+

@@ -1,0 +1,80 @@
+#!/bin/bash
+#rush weigelt
+#4/27/18  
+
+#opening statement so if we have an argument, we move directories; if not, we just keep moving forward
+if [ -n "$1" ] ; then
+	cd "$1"
+fi	
+	#find all directories below us, and plaece dir.xml file in each directory. Append opening two lines to files
+	for dir in $(find "$PWD" -type d) ; do
+		echo '<?xml version="1.0" encoding="ISO-8859-1"?>' > "$dir/dir.xml"                         
+		echo "<direntry>" >> "$dir/dir.xml"
+	done
+	#get a list of all files, then find and save a list of directory paths leading us to READMEs
+	for files in * ; do
+		ls -R1 "$files"  
+		#save README paths to a file: tmp
+		find "$files" -name "README" -print >> tmp 
+		#save each README path from tmp into an array. rpArray= Readme Path Array
+		rpArray=( $(grep "README" tmp))
+		#len of README array for iteration purposes
+		rpLen=${#rpArray[@]}
+	done
+		#iterate through Readme Path Array, save destination paths associated 
+		#with each readme for writing purposes
+		for ((i = 0; i<${rpLen}; ++i))  ; do
+			rpath=${rpArray[i]}
+			dpath=${rpath%???????}
+			#first argument in READMEs, this will always point us to whether 
+			#the file is an INDEX or REQUIRED
+			pointer=( $(awk 'BEGIN{FS=":"} {print $1}' "$rpath"))
+			#every subsequent argument in READMEs, this allows the associated files to stay grouped together
+			inArray=( $(awk 'BEGIN{FS=":"} {print $2, $3, $4, $5}' "$rpath"))
+			#add every argument we pull from READMEs, so we can compare later
+			totArray+=( "${inArray[@]}" )			
+			#length of arguments in INDEX or REQUIRED
+			inLen=${#inArray[@]}
+			#if first argument from README is INDEX, form index part of xml file
+			if [[ "${pointer[0]}" == "index" ]] ; then
+				echo "  <index>" >> "$dpath/dir.xml"
+				echo "    <file>"${inArray[0]}"</file>" >> "$dpath/dir.xml"
+				echo "  </index>" >> "$dpath/dir.xml"
+			#if first argument from README is REQUIRED, form required part of xml file
+			if [[ "${pointer[1]}" == "required" ]] ; then
+				echo "  <required>" >> "$dpath/dir.xml"
+				for ((z = 1; z<${inLen}; z++)) ; do
+					echo "    <file>"${inArray[z]}"</file>" >> "$dpath/dir.xml"
+				done
+				echo "  </required>" >> "$dpath/dir.xml"
+			fi
+			fi
+		done
+#now, back in directories, we are appending OTHER section and then the end of xml file
+for dir in $(find "$PWD" -type d) ; do
+	echo "  <other>" >> "$dir/dir.xml"
+	#an array of all files, so we can figure out what is lurking to be placed in other
+	filesArray=( $(ls "$dir") )
+	#len of other for iteration
+	lenFArray="${#filesArray[@]}"
+	echo "${filesArray[@]}"
+	#for everything in our file array, add it to OTHER section for the moment
+	for otherFile in "${filesArray[@]}" ; do
+		
+		if [[ "${otherFile}" =~ ^[A-QS-Z0-9] ]] ; then                         
+			echo "    <dir>"$otherFile"</dir>" >> "$dir/dir.xml"
+		elif [[ "$otherFile" != "dir.xml" ]] && [[ ! -d "$otherFile" ]] ; then
+			echo "    <file>"$otherFile"</file>" >> "$dir/dir.xml"		
+		fi
+	done
+#closing statements of xml file
+echo "  </other>" >> "$dir/dir.xml"         
+echo "</direntry>" >> "$dir/dir.xml"
+#delete any repeated lines--this gets ride of doubling up files in REQUIRED/INDEX and OTHER
+awk '!seen[$0]++' "$dir/dir.xml" > "$dir/dir2.xml"
+#delete our original file
+rm "$dir/dir.xml"
+#rename our temporary file with the neccessary name
+mv "$dir/dir2.xml" "$dir/dir.xml"
+done
+#fin

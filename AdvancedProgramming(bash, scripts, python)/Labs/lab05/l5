@@ -1,0 +1,87 @@
+#rush weigelt
+#lab5 answer sheet
+
+1.1 The comments/definitions are extraneous, as true and false carry those definitions by default in Unix.
+
+1.2 int smaller(char *val1, char *val2) {
+	#strcmp is a comparision function in C
+	if (strcmp(val1, val2) < 1)
+		return 1;
+	else
+		return 0;
+
+1.3 Trying to articulate it aloud is even more nauseating than reading it. 
+
+1.4 
+a) if (c != 'y' || c!= 'Y' )
+	return;
+
+b) if (length < Bufsize)
+	length = Bufsize;
+
+c)  flag != flag
+
+d) quote=1;
+   if (*line == '"')
+	quote=0;
+
+e) bit = (val & 1) ? 1 : 0;
+
+1.5 the two lines in the function are redundant.
+
+1.6 
+1 1
+1 2
+2 2
+3 1
+1 3
+
+1.7 
+a) if ! (istty(stdin) || istty(stdout) || istty(stderr))
+	  	return 0;
+
+b) if (retval != SUCCESS)
+	return (retval)	;
+   else
+	return SUCCESS;
+
+c) for (k=0; k < 5; k++; x += dx)
+	scanf("%lf", &dx);
+
+1.8 for (i=0; i<total; i++) {
+	if (this.getName(i) == nametable.userName()) {
+		retrun (0) ;
+	}
+    }
+
+1.9 variable c isnt properly isolated with parenthesis, so it could be executed out of order/multiple times.
+
+1.10 
+#define feetToMeter 0.3048
+#define meterToFoot 3.28084
+#define milesToFeet 5280.0
+#define milesToKilomtrs 1.609344
+#define sqrMilesToSqrKilomtrs 2.589988
+
+1.11
+a) comment should come before call, not after
+
+b) test that n is greater than MAX OR that n is odd
+
+c) first comment is redundent due to the functions name being self explanatory
+ the body comments (increments) are confusing because it claims to do the same thing, despite different variables being involved on the lines after the comments.
+
+PART II
+
+2.1) uploaded as s1.py in top folder
+
+2.2) uploaded s2.py in top folder
+
+2.3) uploaded id.py in top folder
+
+2.4) uploaded id2.py in top folder
+
+2.5) uploaded my phoneParseNrs.py in top folder
+
+
+
