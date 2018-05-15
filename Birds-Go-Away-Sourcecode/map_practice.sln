@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "map_practice", "map_practice.csproj", "{4C382289-3F89-6005-2A5C-0DAC58E61407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "map_practice.Editor", "map_practice.Editor.csproj", "{6AFC02F6-D4C6-9F54-4D86-9155F8FF7830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C382289-3F89-6005-2A5C-0DAC58E61407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C382289-3F89-6005-2A5C-0DAC58E61407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C382289-3F89-6005-2A5C-0DAC58E61407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C382289-3F89-6005-2A5C-0DAC58E61407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AFC02F6-D4C6-9F54-4D86-9155F8FF7830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AFC02F6-D4C6-9F54-4D86-9155F8FF7830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AFC02F6-D4C6-9F54-4D86-9155F8FF7830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AFC02F6-D4C6-9F54-4D86-9155F8FF7830}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
